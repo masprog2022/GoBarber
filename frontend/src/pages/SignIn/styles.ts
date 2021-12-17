@@ -25,35 +25,6 @@ form {
     margin-bottom: 24px;
   }
 
-  input {
-    background: #232129;
-    border-radius: 10px;
-    border: 1px solid #212329;
-    padding: 16px;
-    width: 100%;
-
-    & + input {
-      margin-top: 8px;
-    }
-  }
-
-  button {
-    background: #ff9000;
-    height: 56px;
-    border-radius: 10px;
-    border: 0;
-    color: #312e38;
-    padding: 0 16px;
-    width: 100%;
-    font-weight: 500px;
-    margin-top: 16px;
-    transition: background-color 0.2s;
-
-
-    &:hover {
-    background: ${shade(0.2, '#ff9000')};
-  }
-  }
 
   a {
     color: #f4ede8;
