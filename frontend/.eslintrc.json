@@ -40,7 +40,6 @@
       "no-new-wrappers": 0,
       "no-mixed-operators": 0,
       "require-atomic-updates": "off",
-      "no-use-before-define": "off",
       "no-unused-expressions":"off",
       "comma-dangle": "off",
       "no-unused-vars": "off",

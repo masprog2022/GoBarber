@@ -2,8 +2,10 @@
 
 import React, { InputHTMLAttributes, useEffect, useRef, useState, useCallback } from 'react';
 import { IconBaseProps } from 'react-icons';
-import { Container } from './styles';
+import { FiAlertCircle } from 'react-icons/fi';
+import { Container, Error } from './styles';
 import { useField } from '@unform/core';
+//import Tooltip from '../Tooltip'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> { // essa interface faz com que podemos utilizar elementos HTML dentro do nosso input
   name: string;
@@ -39,7 +41,7 @@ const Input: React.FC<InputProps> = ({name, icon: Icon, ...rest}) => {
 
 
   return ( // passamos o InputProps como parametro dentro do React.FC, assim podemos utilizar todos elementos HTML do nosso input
-    <Container isFilled={isFilled} isFocused={isFocused}>
+    <Container isErrored={!!error} isFilled={isFilled} isFocused={isFocused}>
       { Icon && <Icon size={20} /> }
 
       <input
@@ -50,7 +52,11 @@ const Input: React.FC<InputProps> = ({name, icon: Icon, ...rest}) => {
       {...rest}
       />
 
-      {error}
+      {error &&
+      <Error title={error}>
+        <FiAlertCircle color='c53030' size={20} />
+      </Error>
+      }
 
     </Container>
   )
