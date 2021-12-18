@@ -50,6 +50,8 @@ const Input: React.FC<InputProps> = ({name, icon: Icon, ...rest}) => {
       {...rest}
       />
 
+      {error}
+
     </Container>
   )
 } //  dentro do input passamos todos as propriedades utilizando o {...props} o famoso spread no React
