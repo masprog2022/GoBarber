@@ -12,7 +12,7 @@ import {  Form } from '@unform/web';
 
 import * as Yup from 'yup';
 
-import AuthContext from '../../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
@@ -23,18 +23,21 @@ import Button from '../../components/Button';
 
 import logoImg from '../../assets/logo.svg';
 
-
+interface SignInFormData {
+  email: string;
+  password: string;
+}
 
 const SignIn: React.FC = () =>{
 
   const formRef = useRef<FormHandles>(null);
 
-  const {name } = useContext(AuthContext);
-  console.log(name);
+  const { signIn } = useContext(AuthContext);
+  //console.log(name);
 
   const handleSubmit = useCallback(
     /*eslint no-undef: "error"*/
-    async(data: Object) => {
+    async(data: SignInFormData) => {
      //console.log(data)
      try {
 
@@ -50,6 +53,11 @@ const SignIn: React.FC = () =>{
          abortEarly: false
        });
 
+       signIn({
+         email: data.email,
+         password: data.password
+       });
+
        //console.log(data)
 
 
@@ -63,7 +71,7 @@ const SignIn: React.FC = () =>{
            return;
        }
      }
-   },[])
+   },[signIn])
 
 
   return (
