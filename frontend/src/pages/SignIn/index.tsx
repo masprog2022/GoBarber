@@ -32,8 +32,8 @@ const SignIn: React.FC = () =>{
 
   const formRef = useRef<FormHandles>(null);
 
-  const { signIn } = useContext(AuthContext);
-  //console.log(name);
+  const { user, signIn } = useContext(AuthContext);
+  console.log(user);
 
   const handleSubmit = useCallback(
     /*eslint no-undef: "error"*/
