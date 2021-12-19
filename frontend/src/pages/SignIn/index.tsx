@@ -1,6 +1,6 @@
 //import React, { ButtonHTMLAttributes } from 'react';
 
-import React, { useCallback, useRef, useContext} from 'react';
+import React, { useCallback, useRef } from 'react';
 
 import { Container, Content, Background } from './styles';
 
@@ -12,7 +12,7 @@ import {  Form } from '@unform/web';
 
 import * as Yup from 'yup';
 
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
@@ -32,8 +32,8 @@ const SignIn: React.FC = () =>{
 
   const formRef = useRef<FormHandles>(null);
 
-  const { user, signIn } = useContext(AuthContext);
-  console.log(user);
+  const { signIn } = useAuth();
+  //console.log(user);
 
   const handleSubmit = useCallback(
     /*eslint no-undef: "error"*/
