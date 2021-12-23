@@ -1,7 +1,7 @@
 
 import React, { useCallback, useRef } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 import { Container, Content, Background, AnimationContainer  } from './styles';
@@ -18,17 +18,27 @@ import getValidationErrors from '../../utils/getValidationErrors';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import api from '../../services/api';
+import { useToast } from '../../hooks/toast'
 
 
 import logoImg from '../../assets/logo.svg';
 
+interface SignUpFormData {
+  name: string;
+  email: string;
+  password: string;
+}
+
 const SignUp: React.FC = () => {
  const formRef = useRef<FormHandles>(null);
+ const { addToast } = useToast();
+ const history = useHistory();
  console.log(formRef);
 
  const handleSubmit = useCallback(
    /*eslint no-undef: "error"*/
-   async(data: Object) => {
+   async(data: SignUpFormData) => {
     //console.log(data)
     try {
 
@@ -45,7 +55,16 @@ const SignUp: React.FC = () => {
         abortEarly: false
       });
 
-      //console.log(data)
+
+      await api.post('/users', data);
+
+      history.push('/');
+
+      addToast({
+        type: 'sucess',
+        title: 'Cadastro concluído',
+        description: 'Seu cadastro foi efetuado com sucesso!',
+      });
 
 
 
@@ -57,8 +76,13 @@ const SignUp: React.FC = () => {
 
           return;
       }
+      addToast({
+        type: 'error',
+        title: 'Erro no cadastro',
+        description: 'Ocorreu um erro ao cadastrar, tente novamente.',
+      });
     }
-  },[])
+  },[addToast, history])
 
   return (
 
