@@ -2,7 +2,9 @@
 
 import React, { useCallback, useRef } from 'react';
 
-import { Container, Content, Background } from './styles';
+import { Link } from 'react-router-dom';
+
+import { Container, Content, AnimationContainer, Background } from './styles';
 
 import { FiMail, FiLock, FiLogIn } from 'react-icons/fi';
 
@@ -32,6 +34,7 @@ interface SignInFormData {
 const SignIn: React.FC = () =>{
 
   const formRef = useRef<FormHandles>(null);
+  //const navigate = useNavigate();
 
   const { signIn } = useAuth();
   const { addToast } = useToast();
@@ -84,6 +87,7 @@ const SignIn: React.FC = () =>{
   return (
     <Container>
         <Content>
+          <AnimationContainer>
             <img src={logoImg} alt="Gobarber" />
             <Form ref={formRef} onSubmit={handleSubmit}>
               <h1>Faça seu logon </h1>
@@ -94,10 +98,11 @@ const SignIn: React.FC = () =>{
               <a href="#">Esqueci minha senha</a>
             </Form>
 
-            <a href="#">
+            <Link to="/signup">
               <FiLogIn />
               Criar conta
-              </a>
+              </Link>
+          </AnimationContainer>
         </Content>
 
         <Background />

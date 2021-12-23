@@ -1,7 +1,10 @@
 
 import React, { useCallback, useRef } from 'react';
 
-import { Container, Content, Background } from './styles';
+import { Link } from 'react-router-dom';
+
+
+import { Container, Content, Background, AnimationContainer  } from './styles';
 
 import { FiMail, FiLock, FiArrowLeft, FiUser } from 'react-icons/fi';
 
@@ -63,6 +66,7 @@ const SignUp: React.FC = () => {
 
   <Background />
     <Content>
+       <AnimationContainer>
         <img src={logoImg} alt="Gobarber" />
         <Form ref={formRef} onSubmit={handleSubmit}>
           <h1>Faça seu cadastro </h1>
@@ -78,10 +82,11 @@ const SignUp: React.FC = () => {
 
         </Form>
 
-        <a href="#">
+        <Link to="/">
           <FiArrowLeft />
           Voltar para logon
-          </a>
+          </Link>
+        </AnimationContainer>
     </Content>
 
 </Container>
