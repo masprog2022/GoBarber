@@ -1,15 +1,19 @@
 import React from 'react';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
+
+import Route from './route';
 
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SignUp';
+import Dashboard from '../pages/Dashboard';
 
 export const Router: React.FC = () => (
   <BrowserRouter>
-    <Routes>
-       <Route path="/" element={<SignIn />} />
-       <Route path="/signup" element={<SignUp />} />
-    </Routes>
+     <Switch>
+       <Route path="/" exact component={SignIn} />
+       <Route path="/signup" component={SignUp} />
+       <Route path="/dashboard" component={Dashboard} isPrivate/>
+     </Switch>
   </BrowserRouter>
 )
