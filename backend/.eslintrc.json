@@ -18,6 +18,7 @@
         "@typescript-eslint",
         "prettier"
     ],
+
     "rules": {
       "prettier/prettier": "error",
       "import/extensions":[
@@ -28,6 +29,7 @@
         }
       ]
     },
+
     "settings": {
       "import/resolver":{
         "typescript": {}
